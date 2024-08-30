@@ -1,0 +1,460 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW - Olympics test App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="..\lib\jquery-ui\dist\themes\base\jquery-ui.css" rel="stylesheet" />
+
+    <link href="myCSS.css" rel="stylesheet" />
+    <link rel="website icon" type="png" href="https://cdn-icons-png.flaticon.com/128/140/140398.png" />
+    <link href="../lib/Leaflet/leaflet.css" rel="stylesheet" />
+    <script src="../lib/Leaflet/leaflet-src.esm.js"></script>
+    <script src="../lib/Leaflet/leaflet-src.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <style>
+        #map {
+            height: 380px;
+            width: 700px;
+            margin: auto;
+            border-radius: 5px;
+            margin-bottom: 50px
+        }
+
+        .carousel {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .carousel-item {
+            z-index: -100;
+            height: 600px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .carousel-item:nth-child(1) {
+            background-image: url('https://greekcitytimes.com/wp-content/uploads/2020/08/athens_2004.jpg');
+        }
+
+        .carousel-item:nth-child(2) {
+            background-image: url('https://ichef.bbci.co.uk/images/ic/1200x675/p01g4pwf.jpg');
+        }
+
+        .carousel-item:nth-child(3) {
+            background-image: url('https://i.cbc.ca/1.5451806.1580848415!/fileImage/httpImage/olympicoval2010.jpg');
+        }
+
+        .carousel-item:nth-child(4) {
+            background-image: url('https://www.costacruzeiros.com/content/dam/costa/inventory-assets/ports/RIO/c035_rio_de_janeiro.jpg');
+        }
+
+        .carousel-item:nth-child(5) {
+            background-image: url('https://www.aljazeera.com/wp-content/uploads/2021/08/2021-08-08T131925Z_45378019_SP1EH881108KG_RTRMADP_3_OLYMPICS-2020-CEREMONY-CLOSING.jpg?resize=1170%2C780');
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="Olympics">
+                <img src='http://192.168.160.58/Olympics/Images/Olympic_rings.svg' height="35">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active"><a class="nav-link btnw btn4 " aria-current="page" href="athletes.html"
+                            style="padding-top:5px"><i class="fa fa-user "></i> Athletes</a></li>
+                    <li class="nav-item"><a class="nav-link btnb btn4" aria-current="page" href="competitions.html"
+                            style="padding-top:5px"><i class="fa fa-trophy"></i> Competitions</a></li>
+                    <li class="nav-item"><a class="nav-link btnd btn4" aria-current="page" href="countries.html"
+                            style="padding-top:5px"><i class=" fa fa-flag"></i> Countries</a></li>
+                    <li class="nav-item"><a class="nav-link btns btn4" aria-current="page" href="games.html"
+                            style="padding-top:5px"><i class="fa fa-map-marker"></i> Games</a></li>
+                    <li class="nav-item"><a class="nav-link btnp btn4" aria-current="page" href="modalities.html"
+                            style="padding-top:5px"><i class="fa fa-soccer-ball-o"></i> Modalities</a></li>
+                    <li class="nav-item"><a class="nav-link btnl btn4" aria-current="page" href="statistics.html"
+                            style="padding-top:5px"><i class="fa fa-bar-chart"></i> Statistics</a></li>
+                    <li class="nav-item"><a class="nav-link btnd btn4" aria-current="page" href="favoritos.html"
+                            style="padding-top:5px"><i class="fa fa-heart"></i> Favorites</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Working Area -->
+    <div>
+
+    </div>
+    <div id="myCarousel" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1" class="active"
+                aria-current="true"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="display-1">Anthens 2004</div>
+                    <p>The 2004 Summer Olympics, officially the Games of the XXVIII Olympiad and also known as Athens
+                        2004, were an international multisport event held from 8 to 24 August 2008, in Beijing, China.
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="display-1">Beijing 2008</div>
+                    <p>The 2008 Summer Olympics, officially the Games of the XXIX Olympiad and also known as Beijing
+                        2008, were an international multisport event held from 13 to 29 August 2004 in Athens, Greece.
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="display-1">Vancouver 2010</div>
+                    <p>The 2010 Winter Olympics, officially known as the XXI Olympic Winter Games and also known as
+                        Vancouver 2010, were an international winter multi-sport event held from February 12 to 28, 2010
+                        in Vancouver, British Columbia, Canada, with some events held in the surrounding suburbs of
+                        Richmond, West Vancouver and the University of British Columbia, and in the nearby resort town
+                        of Whistler.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="display-1">Rio de Janeiro 2016</div>
+                    <p>The 2016 Summer Olympics, officially the Games of the XXXI Olympiad and also known as Rio 2016,
+                        was an international multi-sport event held from 5 to 21 August 2016 in Rio de Janeiro, Brazil.
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="display-1">Tokio 2020</div>
+                    <p>The 2020 Summer Olympics, officially the Games of the XXXII Olympiad and also known as Tokyo
+                        2020, was an international multi-sport event held from 23 July to 8 August 2021 in Tokyo, Japan.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container-fluid justify-content-center row border-bottom" style="padding-bottom:50px">
+        <div class="row" style="margin-bottom:40px;text-align:center">
+            <h2><strong>Search anything </strong></h2>
+        </div>
+        <form class="col-8">
+            <input style="text-align:center" class="form-control mr-sm-2" type="search"
+                placeholder="Here you can search for anything " spellcheck="false" id="tagsIndex" aria-label="Search">
+        </form>
+    </div>
+    <div class="container-fluid justify-content-center row border-bottom" style="padding-bottom:50px">
+
+        <div class="row" style="margin-top:40px;margin-bottom:40px;text-align:center">
+            <h2><strong>Curiosities</strong></h2>
+        </div>
+        <div class="accordion col-8" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <strong>The Olympics</strong>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>The modern <a class="text-dark" href="https://en.wikipedia.org/wiki/Olympic_Games"
+                                target="_blank"><strong>Olympic Games</strong></a> or Olympics are the leading
+                            international sporting events featuring summer and winter sports competitions in which
+                            thousands of athletes from around the world participate in a variety of competitions. The
+                            Olympic Games are considered the world's foremost sports competition with more than 200
+                            teams, representing sovereign states and territories, participating. The Olympic Games are
+                            normally held every four years, and since 1994, have alternated between the Summer and
+                            Winter Olympics every two years during the four-year period.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong>History</strong>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            <a class="text-dark"
+                                href="https://olympics.com/ioc/faq/history-and-origin-of-the-games/what-is-the-origin-of-the-olympic-games"
+                                target="_blank"><strong>The history of the Games</strong></a> goes back around 3,000
+                            years, to the Peloponnese in Ancient Greece. Sports contests organised at Olympia took place
+                            every four years and acquired the name Olympic Games. The four-year interval between the
+                            Ancient Games editions was named an “Olympiad”, and was used for dating purposes at the
+                            time: time was counted in Olympiads rather than years.
+                            In 1894, <a class="text-dark" href="https://en.wikipedia.org/wiki/Pierre_de_Coubertin"
+                                target="_blank"><strong>Pierre de Coubertin</strong></a> launched his plan to revive the
+                            Olympic Games, and in 1896 the first Games of the modern era were held in Athens.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong>Most successful athletes</strong>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            There are thounsands of athletes who have won an Olympic medal, but we can highlight these
+                            three, who are the atlhetes who have won the most medals in the history of the modern
+                            Olympics:
+                        <ul>
+                            <li><a class="text-dark" href='./athleteDetails.html?id=94406'
+                                    target="_blank"><strong>Michael Phelps</strong></a>, a male swimmer from the USA,
+                                has won a total of 28 medals, 23 of Gold, 3 of Silver and 2 of Bronze, across four
+                                editions, from 2008 to 2016, making him the athlete with the most olympic medals in the
+                                morden Era;</li>
+                            <li><a class="text-dark" href='https://en.wikipedia.org/wiki/Larisa_Latynina'
+                                    target="_blank"><strong>Larisa Latynina</strong></a>, a female gymnast from URSS
+                                (Soviet Union), has won 18 medals, 9 of Gold, 5 of Silver and 4 of Bronze, across three
+                                editions, from 1956 to 1964, making her the 2nd athlete with the most olympic medals in
+                                the morden Era;</li>
+                            <li><a class="text-dark" href='./athleteDetails.html?id=11943' target="_blank"><strong>Marit
+                                        Bjørgen</strong></a>, a female cross-country skier from Norway, has won 15
+                                medals, 8 of Gold, 4 of Silver and 3 of Bronze, across five editions, from 2002 to 2018,
+                                making her the 3rd athlete with the most olympic medals in the morden Era;</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid justify-content-center" style="margin-top:40px">
+        <div class="row" style="margin-bottom:40px;text-align:center">
+            <h2><strong>Distribution of the Olympics around the world</strong></h2>
+        </div>
+        <div class="justify-content-center" id="map">
+
+        </div>
+
+    </div>
+    <!--modal-->
+    <div class="modal" tabindex="-1" id="modal2">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center">Newsletter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="needs-validation" novalidate">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control " id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Your e-mail is..." required>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Name</label>
+                            <input type="text" id="nome" class="form-control" aria-describedby="helpId"
+                                placeholder="Your name is..." required>
+                        </div>
+                    </div>
+                    <div class="ms-3 pb-3">
+                        Sex
+                        <div class=" form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                                required>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Female
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                required>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                                required>
+                            <label class="form-check-label" for="flexRadioDefault3">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of Working Area -->
+    <nav class="navbar navbar-light bg-light fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy; Introdução as Tecnologias Web - 2022/23</div>
+            <div class="navbar-text"><a class="nav-link" style="text-decoration:none" href="aboutUs.html">About us</a>
+            </div>
+            <div class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal2" href="#modal2"
+                    aria-current="page">Newsletter</a></div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        var map = L.map('map').setView([40.86666667, 34.56666667], (1));
+
+
+
+        L.tileLayer('https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}.png?key=mNQSaZdO1S6nboMAh9S2', {
+            maxZoom: 15,
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap </a>'
+        }).addTo(map);
+
+        var tochaIcon = L.icon({
+            iconUrl: "tochafinal.png",
+
+
+            iconSize: [40, 65], // size of the icon
+            iconAnchor: [22, 64], // point of the icon which will correspond to marker's location
+            popupAnchor: [10, -58] // point from which the popup should open relative to the iconAnchor
+        });
+        L.marker([51.5, -0.127], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>London</b><br><a class='text-dark' href='./gameDetails.html?id=5'>1908</a>, <a class='text-dark' href='./gameDetails.html?id=16'>1948</a>, <a class='text-dark' href='./gameDetails.html?id=50'>2012</a>");
+        L.marker([48.857, 2.341], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Paris</b><br><a class='text-dark' href='./gameDetails.html?id=2'>1900</a>, <a class='text-dark' href='./gameDetails.html?id=8'>1924</a>");
+        L.marker([38.628, -90.2], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>St Louis</b><br><a class='text-dark' href='./gameDetails.html?id=3'>1904</a>");
+        L.marker([37.9838, 23.7275], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Athens</b><br><a class='text-dark' href='./gameDetails.html?id=1'>1896</a>, <a class='text-dark' href='./gameDetails.html?id=4'>1906</a>, <a class='text-dark' href='./gameDetails.html?id=46'>2004</a>");
+        L.marker([59.333, 18.067], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Stockholm</b><br><a class='text-dark' href='./gameDetails.html?id=6'>1912</a>");
+        L.marker([51.222, 4.398], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Antwerpen</b><br><a class='text-dark' href='./gameDetails.html?id=7'>1920</a>");
+        L.marker([45.924, 6.87], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Chamonix</b><br><a class='text-dark' href='./gameDetails.html?id=9'>1924(Winter)</a>");
+        L.marker([52.37, 4.908], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Amsterdam</b><br><a class='text-dark' href='./gameDetails.html?id=10'>1928</a>");
+        L.marker([46.50, 9.834], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>	Sankt Moritz</b><br><a class='text-dark' href='./gameDetails.html?id=11'>1928(Winter)</a>, <a class='text-dark' href='./gameDetails.html?id=17'>1948(Winter)</a>");
+        L.marker([52.516, 13.377], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>	Berlin</b><br><a class='text-dark' href='./gameDetails.html?id=14'>1936</a>");
+        L.marker([44.282, -73.983], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>	Lake Placid</b><br><a class='text-dark' href='./gameDetails.html?id=13'>1932(Winter)</a>, <a class='text-dark' href='./gameDetails.html?id=34'>1980(Winter)</a>");
+        L.marker([34.054, -118.245], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>	Los Angeles</b><br><a class='text-dark' href='./gameDetails.html?id=12'>1932</a>, <a class='text-dark' href='./gameDetails.html?id=35'>1984</a>");
+        L.marker([60.171, 24.933], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Helsinki</b><br><a class='text-dark' href='./gameDetails.html?id=18'>1952</a>");
+        L.marker([59.912, 10.75], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>	Oslo</b><br><a class='text-dark' href='./gameDetails.html?id=19'1952(Winter)></a>");
+        L.marker([47.493, 11.087], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Garmisch-Partenkirchen</b><br><a class='text-dark' href='./gameDetails.html?id=15'>1936(Winter)</a>");
+        L.marker([-37.817, 144.968], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Melbourne</b><br><a class='text-dark' href='./gameDetails.html?id=20'>1956</a>");
+        L.marker([46.536, 12.139], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>	Cortina d'Ampezzo</b><br><a class='text-dark' href='./gameDetails.html?id=22'>1956(Winter)</a>");
+        L.marker([41.903, 12.496], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Rome</b><br><a class='text-dark' href='./gameDetails.html?id=23'>1960</a>");
+        L.marker([36.740, -119.246], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Squaw Valley</b><br><a class='text-dark' href='./gameDetails.html?id=24'>1960(Winter)</a>");
+        L.marker([35.685, 139.809], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Tokyo</b><br><a class='text-dark' href='./gameDetails.html?id=25'>1964</a>, <a class='text-dark' href='https://en.wikipedia.org/wiki/2020_Summer_Olympics'>2020(1)</a>");
+        L.marker([47.268, 11.391], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Innsbruck</b><br><a class='text-dark' href='./gameDetails.html?id=26'>1964(Winter)</a>, <a class='text-dark' href='./gameDetails.html?id=32'>1976(Winter)</a>");
+        L.marker([19.432, -99.133], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Mexico City</b><br><a class='text-dark' href='./gameDetails.html?id=27'>1968</a>");
+        L.marker([45.194, 5.732], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Grenoble</b><br><a class='text-dark' href='./gameDetails.html?id=28'>1968(Winter)</a>");
+        L.marker([48.136, 11.578], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Munich</b><br><a class='text-dark' href='./gameDetails.html?id=29'>1972</a>");
+        L.marker([43.067, 141.350], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Sapporo</b><br><a class='text-dark' href='./gameDetails.html?id=30'>1972(Winter)</a>");
+        L.marker([45.512, -73.555], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Montreal</b><br><a class='text-dark' href='./gameDetails.html?id=31'>1976</a>");
+        L.marker([55.757, 37.615], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Moscow</b><br><a class='text-dark' href='./gameDetails.html?id=33'>1980</a>");
+        L.marker([43.859, 18.436], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Sarajevo</b><br><a class='text-dark' href='./gameDetails.html?id=36'>1984(Winter)</a>");
+        L.marker([37.559, 127], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Seoul</b><br><a class='text-dark' href='./gameDetails.html?id=37'>1988</a>");
+        L.marker([51.045, -114.063], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Calgary</b><br><a class='text-dark' href='./gameDetails.html?id=38'>1988(Winter)</a>");
+        L.marker([41.388, 2.17], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Barcelona</b><br><a class='text-dark' href='./gameDetails.html?id=39'>1992</a>");
+        L.marker([45.676, 6.393], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Albertville</b><br><a class='text-dark' href='./gameDetails.html?id=40'>1992(Winter)</a>");
+        L.marker([61.115, 10.464], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Lillehammer</b><br><a class='text-dark' href='./gameDetails.html?id=41'>1994(Winter)</a>");
+        L.marker([33.748, -84.391], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Atlanta</b><br><a class='text-dark' href='./gameDetails.html?id=42'>1996</a>");
+        L.marker([36.649, 138.191], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Nagano</b><br><a class='text-dark' href='./gameDetails.html?id=43'>1998(Winter)</a>");
+        L.marker([-33.87, 151.207], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Sydney</b><br><a class='text-dark' href='./gameDetails.html?id=44'>2000</a>");
+        L.marker([40.76, -111.888], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Salt Lake City</b><br><a class='text-dark' href='./gameDetails.html?id=45'>2002(Winter)</a>");
+        L.marker([45.062, 7.68], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Torino</b><br><a class='text-dark' href='./gameDetails.html?id=47'>2006(Winter)</a>");
+        L.marker([39.907, 116.388], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Beijing</b><br><a class='text-dark' href='./gameDetails.html?id=48'>2008</a>");
+        L.marker([49.26, -123.113], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Vancouver</b><br><a class='text-dark' href='./gameDetails.html?id=49'>2010(Winter)</a>");
+        L.marker([43.617, 39.725], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Sochi</b><br><a class='text-dark' href='./gameDetails.html?id=51'>2014(Winter)</a>");
+        L.marker([-22.912, -43.175], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Rio de Janeiro</b><br><a class='text-dark' href='./gameDetails.html?id=52'>2016</a>");
+        L.marker([37.370, 128.389], { icon: tochaIcon }).addTo(map)
+            .bindPopup("<b>Pyeongchang</b><br><a class='text-dark' href='https://en.wikipedia.org/wiki/2018_Winter_Olympics'>2018(Winter)</a>");
+
+    </script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/jquery-ui/dist/jquery-ui.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

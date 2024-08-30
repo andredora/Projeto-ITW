@@ -1,0 +1,234 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2022/23 - Countries edition Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <link rel="website icon" type="png" href="https://cdn-icons-png.flaticon.com/128/140/140398.png" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="Olympics">
+                <img src='http://192.168.160.58/Olympics/Images/Olympic_rings.svg' height="35">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active"><a class="nav-link btnw btn4 " aria-current="page" href="athletes.html"
+                            style="padding-top:5px"><i class="fa fa-user "></i> Athletes</a></li>
+                    <li class="nav-item"><a class="nav-link btnb btn4" aria-current="page" href="competitions.html"
+                            style="padding-top:5px"><i class="fa fa-trophy"></i> Competitions</a></li>
+                    <li class="nav-item"><a class="nav-link btnd btn4" aria-current="page" href="countries.html"
+                            style="padding-top:5px"><i class=" fa fa-flag"></i> Countries</a></li>
+                    <li class="nav-item"><a class="nav-link btns btn4" aria-current="page" href="games.html"
+                            style="padding-top:5px"><i class="fa fa-map-marker"></i> Games</a></li>
+                    <li class="nav-item"><a class="nav-link btnp btn4" aria-current="page" href="modalities.html"
+                            style="padding-top:5px"><i class="fa fa-soccer-ball-o"></i> Modalities</a></li>
+                    <li class="nav-item"><a class="nav-link btnl btn4" aria-current="page" href="statistics.html"
+                            style="padding-top:5px"><i class="fa fa-bar-chart"></i> Statistics</a></li>
+                    <li class="nav-item"><a class="nav-link btnd btn4" aria-current="page" href="favoritos.html"
+                            style="padding-top:5px"><i class="fa fa-heart"></i> Favorites</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Working Area -->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mt-5 mb-5">
+                    <div class="card-header">
+                        <b>Number of Atheletes per Olympic Games edition</b>
+                    </div>
+                    <div class="card-body">
+                        <p>Gráfico de barras que indica o número de atletas por cada edição dos Jogos Olímpicos</p>
+                    </div>
+
+                    <canvas style="height:550px; width:1500px" id="atletas"></canvas>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card mb-5">
+                <div class="card-header">
+                    <b>Number of Competitions per Olympic Games edition</b>
+                </div>
+                <div class="card-body">
+                    <p>Gráfico de barras que indica o número de competições por cada edição dos Jogos Olímpicos</p>
+                </div>
+                <canvas style="height:550px; width:1500px" id="comps"></canvas>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card mb-5">
+                <div class="card-header">
+                    <b>Number of Countries per Olympic Games edition</b>
+                </div>
+                <div class="card-body">
+                    <p>Gráfico de barras que indica o número de países por cada edição dos Jogos Olímpicos</p>
+                </div>
+                <canvas style="height:550px; width:1500px" id="countries"></canvas>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card mb-5">
+                <div class="card-header">
+                    <b>Number of Modalities per Olympic Games edition</b>
+                </div>
+                <div class="card-body">
+                    <p>Gráfico de barras que indica o número de modalidades por cada edição dos Jogos Olímpicos</p>
+                </div>
+                <canvas style="height:550px; width:1500px" id="modalities"></canvas>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="http://192.168.160.58/Olympics/Images/Olympic_rings.svg" height="30" /> Loading
+                        data...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://media.tenor.com/L9Vs9r6PtOgAAAAM/minka-madebyminka.gif">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/1200px-Olympic_rings_without_rims.svg.png"
+                            height="30" /> Loading data...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://media.tenor.com/L9Vs9r6PtOgAAAAM/minka-madebyminka.gif">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="http://192.168.160.58/Olympics/Images/Olympic_rings.svg" height="30" /> Loading
+                        data...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-spin fa-3x fa-refresh"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light bg-light fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy; Introdução as Tecnologias Web - 2022/23</div>
+            <div class="navbar-text"><a class="nav-link" style="text-decoration:none" href="aboutUs.html">About us</a>
+            </div>
+            <div class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#modal2" href="#modal2"
+                    aria-current="page">Newsletter</a></div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--modal-->
+    <div class="modal" tabindex="-1" id="modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center">Newsletter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="needs-validation" novalidate">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control " id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Your e-mail is..." required>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Name</label>
+                            <input type="text" id="nome" class="form-control" aria-describedby="helpId"
+                                placeholder="Your name is..." required>
+                        </div>
+                    </div>
+                    <div class="ms-3 pb-3">
+                        Sex
+                        <div class=" form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                                required>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Female
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                required>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                                required>
+                            <label class="form-check-label" for="flexRadioDefault3">
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="statistics.js"></script>
+
+
+
+
+</body>
+
+</html>
