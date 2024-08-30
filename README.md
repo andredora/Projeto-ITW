@@ -1,9 +1,9 @@
-lib:
-    bootstrap
-    chartjs
-    font-awesome
-    jquery
-    jquery-ui
-    jquery-validation
-    jquery-validation-unobtrusive
-    knockout
+lib:\
+ &emsp;    bootstrap\
+ &emsp;   chartjs\
+ &emsp;   font-awesome\
+ &emsp;   jquery\
+ &emsp;   jquery-ui\
+ &emsp;    jquery-validation\
+ &emsp;   jquery-validation-unobtrusive\
+ &emsp;   knockout\
