@@ -6,4 +6,4 @@ lib:\
  &emsp;   jquery-ui\
  &emsp;    jquery-validation\
  &emsp;   jquery-validation-unobtrusive\
- &emsp;   knockout\
+ &emsp;   knockout
